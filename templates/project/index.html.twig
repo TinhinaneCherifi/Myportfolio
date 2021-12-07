@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    <header>
+        <h1>Tinhinane Cherifi</h1>
+        <h2>Portfolio</h2>
+    </header>
+
+    <main class="container-fluid p-5">
+
+        <div class="row">
+            <div class="col-12">
+                <h2> Mes projets</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for projet %}
+                <div class="col-4 p-3">
+                    <div class="card">
+                        <img src="{{ asset('img/site_img/project.png') }}" class="card-img-top" alt="photo principale de {{ project.projectName }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.projectName }}</h5>
+                            <p class="card-text">{{ project.techno }}</p>
+                            <p class="card-text">{{ project.description|u.truncate(90, '...', false) }}</p>
+                        </div>
+                        
+                        <div class="card-body text-center">
+                            <a href="{{ path('project', {'id': project.link}) }}" class="btn btn-secondary">Visitez le site</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </main>
+
+{% endblock %}
